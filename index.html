@@ -4,126 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rahul Pal | Academic Website</title>
-  <style>
-    :root {
-      --bg: #fafafa;
-      --text: #222;
-      --primary: #003366;
-      --primary-600: #0055aa;
-    }
-
-    [data-theme="dark"] {
-      --bg: #1e1e1e;
-      --text: #f4f4f4;
-      --primary: #66aaff;
-      --primary-600: #99cfff;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background-color: var(--bg);
-      color: var(--text);
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .container {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    a { color: var(--primary); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    a:focus-visible { outline: 3px solid var(--primary-600); outline-offset: 2px; }
-
-    header.site-header {
-      background: var(--primary);
-      color: #fff;
-      padding: 2rem 0 1.5rem;
-      text-align: center;
-      transition: background 0.3s;
-    }
-    header.site-header h1 { margin: 0; font-size: 2rem; }
-    header.site-header p { margin-top: 0.5rem; }
-    .header-links { margin-top: 0.5rem; }
-    .header-links a { color: #fff; }
-    .header-links a:hover { text-decoration: underline; }
-
-    .profile-pic {
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #fff;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    }
-
-    nav {
-      background: #f4f4f4;
-      padding: 0.5rem 0;
-      transition: background 0.3s;
-    }
-    [data-theme="dark"] nav { background: #2a2a2a; }
-    nav .container { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-    nav a { font-weight: bold; }
-    nav a:hover { color: var(--primary-600); }
-
-    .theme-toggle {
-      background: none;
-      border: 2px solid #fff;
-      border-radius: 20px;
-      padding: 0.3rem 0.8rem;
-      font-size: 0.9rem;
-      color: #fff;
-      cursor: pointer;
-      margin-top: 1rem;
-      transition: background 0.3s, color 0.3s;
-    }
-    .theme-toggle:hover { background: rgba(255,255,255,0.2); }
-
-    section { padding: 2rem 0; }
-    h2 {
-      color: var(--primary);
-      border-bottom: 2px solid var(--primary);
-      padding-bottom: 0.3rem;
-      margin-top: 0;
-      transition: color 0.3s, border-color 0.3s;
-    }
-    ul { list-style-type: square; padding-left: 1.25rem; }
-    li { margin-bottom: 0.6rem; }
-
-    .pub-list { list-style: none; padding-left: 0; }
-    .pub-item { margin: 0 0 0.9rem 0; }
-    .pub-title a { font-weight: bold; }
-    .pub-status { color: #888; }
-
-    footer {
-      background: var(--primary);
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-      transition: background 0.3s;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Starfield Background -->
+  <canvas id="stars"></canvas>
+
   <header class="site-header">
     <div class="container">
-    <img src="profile.png" alt="Rahul Pal" class="profile-pic">
+      <img src="profile.png" alt="Rahul Pal" class="profile-pic">
       <h1>Rahul Pal</h1>
       <p>Ph.D. Scholar in Cognitive Science, IIT Hyderabad</p>
       <p class="header-links">
-        <a href="mailto:irahul.pal0487@gmail.com">Email</a>
-        &nbsp;|
-        <a href="https://orcid.org/0000-0001-7766-7047" target="_blank" rel="noopener noreferrer">ORCID</a>
-        &nbsp;|
+        <a href="mailto:irahul.pal0487@gmail.com">Email</a> |
+        <a href="https://orcid.org/0000-0001-7766-7047" target="_blank" rel="noopener noreferrer">ORCID</a> |
         <a href="https://docs.google.com/document/d/1UCKNAjZ1dPWgtBYZNdD1Gv9Nm5IeKmHbEqtAERbjmjU/edit?usp=sharing" target="_blank" rel="noopener noreferrer">CV</a>
       </p>
       <button class="theme-toggle" id="theme-toggle">🌙 Dark Mode</button>
@@ -200,6 +94,7 @@
     <p>&copy; 2025 Rahul Pal | Academic Website</p>
   </footer>
 
+  <!-- Dark/Light Mode Toggle -->
   <script>
     const toggleBtn = document.getElementById("theme-toggle");
     toggleBtn.addEventListener("click", () => {
@@ -212,6 +107,62 @@
       }
     });
   </script>
+
+  <!-- Starfield Animation -->
+  <script>
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let stars = [];
+    let w, h;
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    function createStars(count) {
+      stars = [];
+      for (let i = 0; i < count; i++) {
+        stars.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          z: Math.random() * w
+        });
+      }
+    }
+
+    function moveStars() {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = "white";
+      for (let i = 0; i < stars.length; i++) {
+        stars[i].z -= 2;
+        if (stars[i].z <= 0) {
+          stars[i].x = Math.random() * w;
+          stars[i].y = Math.random() * h;
+          stars[i].z = w;
+        }
+        let k = 128.0 / stars[i].z;
+        let px = stars[i].x * k + w / 2;
+        let py = stars[i].y * k + h / 2;
+        if (px >= 0 && px <= w && py >= 0 && py <= h) {
+          let size = (1 - stars[i].z / w) * 3;
+          ctx.beginPath();
+          ctx.arc(px, py, size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+
+    function animate() {
+      moveStars();
+      requestAnimationFrame(animate);
+    }
+
+    createStars(400);
+    animate();
+  </script>
 </body>
 </html>
-
