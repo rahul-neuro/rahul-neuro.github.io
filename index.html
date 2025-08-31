@@ -1,10 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rahul Pal | Academic Website</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #fafafa;
+      color: #222;
+    }
+    header {
+      background: #003366;
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 { margin: 0; }
+    header p { margin-top: 0.5rem; }
+    nav {
+      background: #f4f4f4;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #003366;
+      font-weight: bold;
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #003366;
+      border-bottom: 2px solid #003366;
+      padding-bottom: 0.3rem;
+    }
+    ul { list-style-type: square; }
+    footer {
+      background: #003366;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to my Academic Website</h1>
-  <p>I am Rahul Pal, working in neuroscience and cognitive research.</p>
+  <header>
+    <h1>Rahul Pal</h1>
+    <p>Ph.D. Candidate in Cognitive Science, IIT Hyderabad</p>
+    <p>
+      <a href="mailto:irahul.pal0487@gmail.com" style="color:#fff;">Email</a> |
+      <a href="https://orcid.org/0000-0001-7766-7047" target="_blank" style="color:#fff;">ORCID</a> |
+      <a href="CV.pdf" style="color:#fff;">CV</a>
+    </p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>I am a Ph.D. candidate in Cognitive Science at the Department of Liberal Arts, IIT Hyderabad. My research focuses on working memory, motor memory, and their interaction during learning and transfer. I hold an M.Sc. in Psychology and a B.Sc. in Psychology Honors, Zoology, and Chemistry from Banaras Hindu University.</p>
+  </section>
+
+  <section id="research">
+    <h2>Research</h2>
+    <ul>
+      <li><b>Role of Working Memory on Motor Memory Formation and Transfer</b> – Ongoing project at IIT Hyderabad investigating how working memory interacts with motor learning and skill transfer.</li>
+      <li><b>Interaction between Release of Inhibitory Control and Emotion Perception</b> – Completed project at CBCS, University of Allahabad using behavioral tasks and TMS.</li>
+      <li><b>Personality Patterns and Empathy</b> – Master’s project at BHU, a correlational study exploring empathy in adults.</li>
+    </ul>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+    <ul>
+      <li><b>Role of Working Memory in Interlimb Generalization of Newly Learned Skills</b> – Accepted.</li>
+    </ul>
+  </section>
+
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <ul>
+      <li>Teaching Assistant, IIT Hyderabad – Moderator and invigilator for LA1830: Introduction to Cognitive Science (282 students).</li>
+      <li>Assisted with the development of the Department of Liberal Arts website at IIT Hyderabad.</li>
+    </ul>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>Programming: Python, MATLAB, R</li>
+      <li>Tools: PsychoPy, Psychtoolbox, PsyToolkit, EEGLAB, TMS</li>
+      <li>Academic Writing: LaTeX (Overleaf), Zotero</li>
+      <li>Data collection: Behavioral, EEG, TMS</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:irahul.pal0487@gmail.com">irahul.pal0487@gmail.com</a></p>
+    <p>Phone: +91 9598990487</p>
+    <p>ORCID: <a href="https://orcid.org/0000-0001-7766-7047" target="_blank">0000-0001-7766-7047</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Rahul Pal | Academic Website</p>
+  </footer>
 </body>
 </html>
