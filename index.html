@@ -23,19 +23,16 @@
       color: var(--text);
     }
 
-    /* General layout */
     .container {
       max-width: 980px;
       margin: 0 auto;
       padding: 0 1rem;
     }
 
-    /* Links */
     a { color: var(--primary); text-decoration: none; }
     a:hover { text-decoration: underline; }
     a:focus-visible { outline: 3px solid var(--primary-600); outline-offset: 2px; }
 
-    /* Header */
     header.site-header {
       background: var(--primary);
       color: #fff;
@@ -48,7 +45,16 @@
     .header-links a { color: #fff; }
     .header-links a:hover { text-decoration: underline; }
 
-    /* Nav */
+    .profile-pic {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
     nav {
       background: #f4f4f4;
       padding: 0.5rem 0;
@@ -57,7 +63,6 @@
     nav a { font-weight: bold; }
     nav a:hover { color: var(--primary-600); }
 
-    /* Sections */
     section { padding: 2rem 0; }
     h2 {
       color: var(--primary);
@@ -68,13 +73,11 @@
     ul { list-style-type: square; padding-left: 1.25rem; }
     li { margin-bottom: 0.6rem; }
 
-    /* Publications */
     .pub-list { list-style: none; padding-left: 0; }
     .pub-item { margin: 0 0 0.9rem 0; }
     .pub-title a { font-weight: bold; }
     .pub-status { color: #444; }
 
-    /* Footer */
     footer {
       background: var(--primary);
       color: #fff;
@@ -87,6 +90,7 @@
 <body>
   <header class="site-header">
     <div class="container">
+      <img src="Screenshot 2022-12-08 230304.png" alt="Rahul Pal" class="profile-pic">
       <h1>Rahul Pal</h1>
       <p>Ph.D. Scholar in Cognitive Science, IIT Hyderabad</p>
       <p class="header-links">
@@ -134,7 +138,7 @@
               Role of Working Memory in Interlimb Generalization of Newly Learned Skills
             </a>
           </span>
-          <span class="pub-status"> — Accepted.</span>
+          <span class="pub-status"></span>
         </li>
       </ul>
     </section>
