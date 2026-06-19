@@ -50,12 +50,65 @@ a:hover { text-decoration: underline; }
 a:focus-visible { outline: 3px solid var(--primary-600); outline-offset: 2px; }
 
 header.site-header {
-  background: rgba(0, 51, 102, 0.85);
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 20% 50%, rgba(102,170,255,0.15), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(200,168,75,0.15), transparent 40%),
+    rgba(0, 51, 102, 0.85);
+
   color: #fff;
   padding: 2rem 0 1.5rem;
   text-align: center;
   transition: background 0.3s;
 }
+
+/* ===========================
+   EEG HEADER ANIMATION
+=========================== */
+
+#eegCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Keep header content above EEG waves */
+
+.site-header .container,
+.site-header h1,
+.site-header p,
+.site-header .header-links,
+.site-header .theme-toggle,
+.site-header .profile-pic {
+  position: relative;
+  z-index: 2;
+}
+
+/* Optional glow effect */
+
+.site-header::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(circle at center,
+      rgba(255,255,255,0.03),
+      transparent 70%);
+
+  pointer-events: none;
+  z-index: 1;
+}
+
 header.site-header h1 { margin: 0; font-size: 2rem; }
 header.site-header p { margin-top: 0.5rem; }
 .header-links { margin-top: 0.5rem; }
