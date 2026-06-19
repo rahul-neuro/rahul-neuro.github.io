@@ -1,490 +1,147 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Pal | PhD Scholar</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&display=swap');
-
-  .site * { box-sizing: border-box; margin: 0; padding: 0; }
-  .site { font-family: 'Inter', sans-serif; color: var(--color-text-primary); line-height: 1.7; }
-  .site a { color: #1a56c4; text-decoration: none; }
-  .site a:hover { text-decoration: underline; }
-
-  .site-header {
-    background: #0A1628;
-    color: #F7F4EE;
-    padding: 0;
-    position: relative;
-    overflow: hidden;
-  }
-
-  #headerCvs {
-    position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-  }
-
-  .header-inner {
-    position: relative; z-index: 2;
-    display: flex; gap: 2rem; align-items: center;
-    padding: 2.5rem 2rem 2rem;
-    min-height: 200px;
-  }
-
-  .profile-ring {
-    width: 90px; height: 90px; border-radius: 50%;
-    border: 2px solid #C8A84B;
-    background: #1a2b42;
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.8rem; color: #C8A84B; flex-shrink: 0;
-  }
-
-  .header-text h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.9rem; font-weight: 400;
-    color: #F7F4EE; line-height: 1.2; margin-bottom: 0.2rem;
-  }
-  .header-text .subtitle {
-    font-size: 0.8rem; color: #8494A8; margin-bottom: 0.7rem;
-    letter-spacing: 0.05em; text-transform: uppercase;
-  }
-  .header-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
-  .header-links a {
-    font-size: 0.8rem; color: #C8A84B;
-    border: 1px solid #C8A84B44;
-    padding: 0.18rem 0.55rem; border-radius: 4px; letter-spacing: 0.03em;
-  }
-  .header-links a:hover { background: #C8A84B22; text-decoration: none; }
-
-  .site-nav {
-    background: #0d1e34;
-    border-bottom: 1px solid #C8A84B33;
-    padding: 0 2rem;
-    display: flex; flex-wrap: wrap;
-  }
-  .site-nav a {
-    color: #8494A8; font-size: 0.8rem; font-weight: 500;
-    padding: 0.65rem 0.9rem; letter-spacing: 0.04em; text-transform: uppercase;
-    border-bottom: 2px solid transparent; display: inline-block;
-  }
-  .site-nav a:hover { color: #C8A84B; text-decoration: none; border-bottom-color: #C8A84B; }
-
-  .site-body { background: #F2F0EC; }
-
-  .section { padding: 2.5rem 2rem; border-bottom: 1px solid #D8D5CE; }
-  .section:last-child { border-bottom: none; }
-
-  .section-label {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.4rem; font-weight: 400;
-    color: #0A1628; margin-bottom: 1.25rem;
-    display: flex; align-items: center; gap: 0.75rem;
-  }
-  .section-label::after { content: ''; flex: 1; height: 1px; background: #C8A84B; opacity: 0.4; }
-
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .about-text { font-size: 0.95rem; color: var(--color-text-secondary); }
-
-  .detail-card { background: #0A1628; border-radius: 8px; padding: 1.25rem; color: #F7F4EE; }
-  .detail-card .dc-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: #C8A84B; margin-bottom: 0.3rem; }
-  .detail-card .dc-val { font-size: 0.9rem; color: #D4D0C8; }
-
-  .research-item {
-    background: white; border-left: 3px solid #C8A84B;
-    padding: 1rem 1.25rem; border-radius: 0 6px 6px 0; margin-bottom: 1rem;
-  }
-  .research-item h3 { font-size: 0.95rem; font-weight: 600; color: #0A1628; margin-bottom: 0.3rem; }
-  .research-item p { font-size: 0.87rem; color: var(--color-text-secondary); }
-  .ri-tag { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: #C8A84B; font-weight: 600; margin-bottom: 0.4rem; }
-
-  .pub-card { background: white; border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; border: 1px solid #DDD9D0; }
-  .pub-card .journal { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8494A8; margin-bottom: 0.4rem; }
-  .pub-card .pub-title { font-family: 'DM Serif Display', serif; font-size: 1rem; color: #0A1628; margin-bottom: 0.4rem; line-height: 1.4; }
-  .pub-card .pub-title a { color: #0A1628; }
-  .pub-card .pub-title a:hover { color: #1a56c4; }
-  .pub-card .authors { font-size: 0.83rem; color: var(--color-text-secondary); margin-bottom: 0.5rem; }
-  .pub-card .doi { font-size: 0.8rem; }
-
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
-  .skill-block { background: white; border-radius: 8px; padding: 1rem; border: 1px solid #DDD9D0; }
-  .skill-block .sk-cat { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: #C8A84B; font-weight: 600; margin-bottom: 0.6rem; }
-  .skill-block .sk-items { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-  .skill-pill { font-size: 0.78rem; background: #EAE8E4; color: #3a3830; padding: 0.2rem 0.55rem; border-radius: 4px; }
-
-  .reads-list { display: flex; flex-direction: column; gap: 1rem; }
-  .read-card { background: white; border-radius: 8px; padding: 1rem 1.25rem; border: 1px solid #DDD9D0; display: flex; gap: 1rem; align-items: flex-start; }
-  .read-num { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: #C8A84B; line-height: 1; flex-shrink: 0; min-width: 2rem; text-align: center; padding-top: 0.1rem; }
-  .read-content .read-title { font-size: 0.9rem; font-weight: 600; color: #0A1628; margin-bottom: 0.3rem; line-height: 1.4; }
-  .read-content .read-title a { color: #0A1628; }
-  .read-content .read-title a:hover { color: #1a56c4; }
-  .read-content .read-note { font-size: 0.83rem; color: var(--color-text-secondary); line-height: 1.5; }
-
-  .resource-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .res-block { background: white; border-radius: 8px; padding: 1rem 1.25rem; border: 1px solid #DDD9D0; }
-  .res-block h3 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: #8494A8; font-weight: 600; margin-bottom: 0.75rem; }
-  .res-block ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
-  .res-block li { font-size: 0.87rem; }
-
-  .contact-bar { background: #0A1628; border-radius: 8px; padding: 1.5rem 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
-  .contact-bar .cb-item { display: flex; gap: 0.5rem; align-items: center; color: #8494A8; font-size: 0.9rem; }
-  .contact-bar .cb-item a { color: #C8A84B; }
-
-  .site-footer { background: #050e1a; color: #8494A8; text-align: center; padding: 1rem; font-size: 0.78rem; }
+body{margin:0;font-family:Arial,sans-serif;background:#f4f1eb;color:#222}
+header{background:#0A1628;color:white;padding:60px 20px;text-align:center}
+.profile{width:110px;height:110px;border:2px solid #C8A84B;border-radius:50%;
+display:flex;align-items:center;justify-content:center;margin:auto;
+font-size:42px;color:#C8A84B}
+h1{margin:15px 0 5px}
+.subtitle{color:#c9c9c9}
+nav{background:#10233f;padding:12px;text-align:center}
+nav a{color:white;text-decoration:none;margin:0 12px}
+section{max-width:1100px;margin:auto;padding:40px 20px}
+.card{background:white;padding:20px;border-radius:10px;margin:15px 0;
+box-shadow:0 2px 8px rgba(0,0,0,.08)}
+h2{color:#0A1628;border-bottom:2px solid #C8A84B;padding-bottom:8px}
+.skills span{display:inline-block;background:#ece8df;padding:6px 10px;
+margin:4px;border-radius:5px}
+footer{background:#0A1628;color:white;text-align:center;padding:20px}
+a{color:#1a56c4}
 </style>
+</head>
+<body>
 
-<div class="site">
+<header>
+<div class="profile">RP</div>
+<h1>Rahul Pal</h1>
+<p class="subtitle">Ph.D. Scholar · Cognitive Science · IIT Hyderabad</p>
+<p>
+<a style="color:#C8A84B" href="mailto:irahul.pal0487@gmail.com">Email</a> |
+<a style="color:#C8A84B" href="https://orcid.org/0000-0001-7766-7047">ORCID</a> |
+<a style="color:#C8A84B" href="https://docs.google.com/document/d/1UCKNAjZ1dPWgtBYZNdD1Gv9Nm5IeKmHbEqtAERbjmjU/edit?usp=sharing">CV</a>
+</p>
+</header>
 
-  <header class="site-header">
-    <canvas id="headerCvs"></canvas>
-    <div class="header-inner">
-      <div class="profile-ring">RP</div>
-      <div class="header-text">
-        <h1>Rahul Pal</h1>
-        <p class="subtitle">Ph.D. Scholar · Cognitive Science · IIT Hyderabad</p>
-        <div class="header-links">
-          <a href="mailto:irahul.pal0487@gmail.com">Email</a>
-          <a href="https://orcid.org/0000-0001-7766-7047" target="_blank">ORCID</a>
-          <a href="https://docs.google.com/document/d/1UCKNAjZ1dPWgtBYZNdD1Gv9Nm5IeKmHbEqtAERbjmjU/edit?usp=sharing" target="_blank">CV</a>
-        </div>
-      </div>
-    </div>
-  </header>
+<nav>
+<a href="#about">About</a>
+<a href="#research">Research</a>
+<a href="#publications">Publications</a>
+<a href="#teaching">Teaching</a>
+<a href="#skills">Skills</a>
+<a href="#contact">Contact</a>
+</nav>
 
-  <nav class="site-nav">
-    <a href="#about">About</a>
-    <a href="#research">Research</a>
-    <a href="#publications">Publications</a>
-    <a href="#teaching">Teaching</a>
-    <a href="#skills">Skills</a>
-    <a href="#resources">Resources</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<section id="about">
+<h2>About</h2>
+<div class="card">
+<p>I am a Ph.D. Scholar in Cognitive Science at IIT Hyderabad. My research focuses on working memory, motor learning, skill transfer, motor memory consolidation, and EEG correlates of learning.</p>
+<p><strong>M.Sc. Psychology:</strong> Banaras Hindu University</p>
+<p><strong>B.Sc.:</strong> Psychology Honors, Zoology, Chemistry (BHU)</p>
+</div>
+</section>
 
-  <div class="site-body">
-    <div class="section" id="about">
-      <h2 class="section-label">About</h2>
-      <div class="about-grid">
-        <p class="about-text">I am a Ph.D. Scholar in Cognitive Science at the Department of Liberal Arts, IIT Hyderabad. My research focuses on working memory, motor skill learning, and their interaction during learning and transfer.</p>
-        <div class="detail-card">
-          <div style="margin-bottom:0.85rem;"><p class="dc-label">Affiliation</p><p class="dc-val">IIT Hyderabad, Dept. of Liberal Arts</p></div>
-          <div style="margin-bottom:0.85rem;"><p class="dc-label">M.Sc.</p><p class="dc-val">Psychology — Banaras Hindu University</p></div>
-          <div><p class="dc-label">B.Sc.</p><p class="dc-val">Psychology Honors, Zoology, Chemistry — BHU</p></div>
-        </div>
-      </div>
-    </div>
+<section id="research">
+<h2>Research</h2>
 
-    <div class="section" id="research">
-      <h2 class="section-label">Research</h2>
-      <div class="research-item">
-        <p class="ri-tag">Ongoing · IIT Hyderabad</p>
-        <h3>Role of Working Memory on Motor Memory Formation and Transfer</h3>
-        <p>Investigating how working memory interacts with motor learning and skill transfer.</p>
-      </div>
-      <div class="research-item">
-        <p class="ri-tag">Completed · CBCS, University of Allahabad</p>
-        <h3>Interaction between Release of Inhibitory Control and Emotion Perception</h3>
-        <p>Behavioral tasks and TMS exploring links between inhibition release and emotion perception.</p>
-      </div>
-      <div class="research-item">
-        <p class="ri-tag">Independent Project · Master's</p>
-        <h3>Personality Patterns and Empathy</h3>
-        <p>A correlational study exploring empathy in adults.</p>
-      </div>
-    </div>
-
-    <div class="section" id="publications">
-      <h2 class="section-label">Publications</h2>
-      <div class="pub-card">
-        <p class="journal">Scientific Reports · 2025</p>
-        <p class="pub-title"><a href="https://doi.org/10.1038/s41598-025-88997-z" target="_blank">Role of working memory in interlimb generalization of newly learned skills</a></p>
-        <p class="authors">Yadav, G., <strong>Pal, R.</strong>, Matkar, S. et al.</p>
-        <p class="doi"><a href="https://doi.org/10.1038/s41598-025-88997-z" target="_blank" style="color:#1a56c4;">doi:10.1038/s41598-025-88997-z</a></p>
-      </div>
-    </div>
-
-    <div class="section" id="teaching">
-      <h2 class="section-label">Teaching</h2>
-      <div class="research-item" style="border-left-color:#8494A8;">
-        <p class="ri-tag">Teaching Assistant · IIT Hyderabad</p>
-        <h3>LA1830: Introduction to Cognitive Science</h3>
-        <p>Moderator and invigilator for a course of 282 students.</p>
-      </div>
-      <div class="research-item" style="border-left-color:#8494A8;margin-bottom:0;">
-        <p class="ri-tag">Service</p>
-        <h3>Dept. of Liberal Arts Website</h3>
-        <p>Assisted with development of the IIT Hyderabad Liberal Arts departmental website.</p>
-      </div>
-    </div>
-
-    <div class="section" id="skills">
-      <h2 class="section-label">Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-block"><p class="sk-cat">Data Analysis</p><div class="sk-items"><span class="skill-pill">R</span><span class="skill-pill">Python</span><span class="skill-pill">MATLAB</span></div></div>
-        <div class="skill-block"><p class="sk-cat">Behavioural Tools</p><div class="sk-items"><span class="skill-pill">PsychoPy</span><span class="skill-pill">Psychtoolbox</span><span class="skill-pill">PsyToolkit</span></div></div>
-        <div class="skill-block"><p class="sk-cat">Academic Writing</p><div class="sk-items"><span class="skill-pill">LaTeX / Overleaf</span><span class="skill-pill">Zotero</span></div></div>
-        <div class="skill-block"><p class="sk-cat">Data Collection</p><div class="sk-items"><span class="skill-pill">Behavioral</span><span class="skill-pill">EEG</span><span class="skill-pill">TMS</span></div></div>
-      </div>
-    </div>
-
-    <div class="section" id="resources">
-      <h2 class="section-label">Interesting Reads</h2>
-      <div class="reads-list">
-        <div class="read-card"><div class="read-num">1</div><div class="read-content"><p class="read-title"><a href="https://www.science.org/doi/10.1126/science.adk8261" target="_blank">Selection of experience for memory by hippocampal sharp wave ripples</a></p><p class="read-note">Explores how hippocampal SWRs determine which experiences get consolidated into long-term memory.</p></div></div>
-        <div class="read-card"><div class="read-num">2</div><div class="read-content"><p class="read-title"><a href="https://psycnet.apa.org/record/1995-12080-001" target="_blank">The earth is round (p &lt; .05)</a></p><p class="read-note">A foundational critique of null hypothesis significance testing misuse in psychological research.</p></div></div>
-        <div class="read-card"><div class="read-num">3</div><div class="read-content"><p class="read-title"><a href="https://www.cambridge.org/core/elements/what-is-life-revisited/E6B3EA136720CF50C9480ADB8F41A6F4" target="_blank">What Is Life? Revisited</a></p><p class="read-note">A modern re-examination bridging biological organization, information, and consciousness.</p></div></div>
-        <div class="read-card"><div class="read-num">4</div><div class="read-content"><p class="read-title"><a href="https://www.science.org/doi/10.1126/science.aec0091" target="_blank">Kiss, shrink, run</a></p><p class="read-note">A unified mechanism for synaptic vesicle release and how neurotransmission maintains precision.</p></div></div>
-        <div class="read-card"><div class="read-num">5</div><div class="read-content"><p class="read-title"><a href="https://www.nature.com/articles/d41586-025-02719-z" target="_blank">These 99 'lab hacks' will make your scientific work easier</a></p><p class="read-note">Practical lab tips and productivity strategies from working researchers across disciplines.</p></div></div>
-      </div>
-      <div style="margin-top:2rem;">
-        <h2 class="section-label" style="font-size:1.1rem;">More Resources</h2>
-        <div class="resource-cols">
-          <div class="res-block"><h3>Programming</h3><ul><li><a href="https://psychopy.org/" target="_blank">PsychoPy Documentation</a></li><li><a href="https://www.mathworks.com/help/matlab/" target="_blank">MATLAB Help Center</a></li><li><a href="https://r4ds.hadley.nz/" target="_blank">R for Data Science</a></li></ul></div>
-          <div class="res-block"><h3>Statistical Journey</h3><ul><li><a href="https://cran.r-project.org/doc/contrib/R-intro-1.1.0.pdf" target="_blank">Introduction to R</a></li><li><a href="https://www.discoveringstatistics.com/" target="_blank">Andy Field's Statistics Resources</a></li><li><a href="https://statsthinking21.org/" target="_blank">Statistical Thinking for the 21st Century</a></li></ul></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section" id="contact">
-      <h2 class="section-label">Contact</h2>
-      <div class="contact-bar">
-        <div class="cb-item"><span>Email:</span><a href="mailto:irahul.pal0487@gmail.com">irahul.pal0487@gmail.com</a></div>
-        <div class="cb-item"><span>ORCID:</span><a href="https://orcid.org/0000-0001-7766-7047" target="_blank">0000-0001-7766-7047</a></div>
-        <div class="cb-item"><span>CV:</span><a href="https://docs.google.com/document/d/1UCKNAjZ1dPWgtBYZNdD1Gv9Nm5IeKmHbEqtAERbjmjU/edit?usp=sharing" target="_blank">View full CV</a></div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="site-footer">Rahul Pal · Ph.D. Scholar, Cognitive Science · IIT Hyderabad</footer>
+<div class="card">
+<h3>Role of Working Memory on Motor Memory Formation and Transfer</h3>
+<p>Investigating how working memory influences motor learning, memory consolidation, reconsolidation, and interlimb transfer.</p>
 </div>
 
-<script>
-const cvs = document.getElementById('headerCvs');
-const ctx = cvs.getContext('2d');
+<div class="card">
+<h3>EEG Correlates of Motor Skill Learning</h3>
+<p>Examining ERPs, oscillatory dynamics, beta rebound, theta activity, and functional connectivity associated with motor skill acquisition and transfer.</p>
+</div>
 
-function resize() {
-  cvs.width = cvs.offsetWidth;
-  cvs.height = cvs.offsetHeight;
-}
-resize();
+<div class="card">
+<h3>Interaction between Release of Inhibitory Control and Emotion Perception</h3>
+<p>Behavioral and TMS investigation conducted at CBCS, University of Allahabad.</p>
+</div>
+</section>
 
-let t = 0;
+<section id="publications">
+<h2>Publications</h2>
 
-function drawBrain(ctx, cx, cy, scale, alpha) {
-  ctx.save();
-  ctx.translate(cx, cy);
-  ctx.scale(scale, scale);
-  ctx.globalAlpha = alpha;
-  ctx.strokeStyle = '#C8A84B';
-  ctx.lineWidth = 1.2 / scale;
-  ctx.lineCap = 'round';
-  ctx.lineJoin = 'round';
+<div class="card">
+<h3>Role of working memory in interlimb generalization of newly learned skills</h3>
+<p><em>Scientific Reports, 2025</em></p>
+<p>Yadav, G., <strong>Pal, R.</strong>, Matkar, S. et al.</p>
+<p><a href="https://doi.org/10.1038/s41598-025-88997-z">doi:10.1038/s41598-025-88997-z</a></p>
+</div>
 
-  // Left hemisphere outer
-  ctx.beginPath();
-  ctx.moveTo(0, -62);
-  ctx.bezierCurveTo(-10, -70, -38, -68, -52, -50);
-  ctx.bezierCurveTo(-68, -30, -68, -5, -60, 12);
-  ctx.bezierCurveTo(-52, 28, -40, 38, -28, 42);
-  ctx.bezierCurveTo(-18, 46, -8, 44, 0, 40);
-  ctx.stroke();
+</section>
 
-  // Right hemisphere outer
-  ctx.beginPath();
-  ctx.moveTo(0, -62);
-  ctx.bezierCurveTo(10, -70, 38, -68, 52, -50);
-  ctx.bezierCurveTo(68, -30, 68, -5, 60, 12);
-  ctx.bezierCurveTo(52, 28, 40, 38, 28, 42);
-  ctx.bezierCurveTo(18, 46, 8, 44, 0, 40);
-  ctx.stroke();
+<section>
+<h2>Conference Presentations</h2>
 
-  // Corpus callosum / midline
-  ctx.beginPath();
-  ctx.moveTo(0, -62);
-  ctx.lineTo(0, 40);
-  ctx.stroke();
+<div class="card">
+<h3>NCM 2026, Kobe, Japan</h3>
+<p><strong>Poster P2-B-53</strong></p>
+<p>Engaging working memory following skill memory reactivation has a time-dependent impact on skill generalization.</p>
+</div>
 
-  // Left gyri (folds)
-  ctx.lineWidth = 0.8 / scale;
-  ctx.globalAlpha = alpha * 0.6;
+</section>
 
-  ctx.beginPath();
-  ctx.moveTo(-52, -50);
-  ctx.bezierCurveTo(-30, -55, -20, -45, -6, -48);
-  ctx.stroke();
+<section id="teaching">
+<h2>Teaching</h2>
 
-  ctx.beginPath();
-  ctx.moveTo(-64, -18);
-  ctx.bezierCurveTo(-42, -22, -28, -14, -8, -16);
-  ctx.stroke();
+<div class="card">
+<h3>Teaching Assistant – Introduction to Cognitive Science</h3>
+<p>Assisted instruction, assessment, moderation, and student support for more than 280 undergraduate students at IIT Hyderabad.</p>
+</div>
 
-  ctx.beginPath();
-  ctx.moveTo(-62, 8);
-  ctx.bezierCurveTo(-40, 4, -26, 12, -6, 10);
-  ctx.stroke();
+</section>
 
-  ctx.beginPath();
-  ctx.moveTo(-52, 28);
-  ctx.bezierCurveTo(-34, 24, -20, 30, -4, 28);
-  ctx.stroke();
+<section id="skills">
+<h2>Skills</h2>
 
-  // Right gyri
-  ctx.beginPath();
-  ctx.moveTo(52, -50);
-  ctx.bezierCurveTo(30, -55, 20, -45, 6, -48);
-  ctx.stroke();
+<div class="card skills">
+<span>MATLAB</span>
+<span>Python</span>
+<span>R</span>
+<span>EEGLAB</span>
+<span>EEG</span>
+<span>ERP Analysis</span>
+<span>Time-Frequency Analysis</span>
+<span>Connectivity Analysis</span>
+<span>PsychoPy</span>
+<span>Psychtoolbox</span>
+<span>TMS</span>
+<span>LaTeX</span>
+<span>Zotero</span>
+</div>
 
-  ctx.beginPath();
-  ctx.moveTo(64, -18);
-  ctx.bezierCurveTo(42, -22, 28, -14, 8, -16);
-  ctx.stroke();
+</section>
 
-  ctx.beginPath();
-  ctx.moveTo(62, 8);
-  ctx.bezierCurveTo(40, 4, 26, 12, 6, 10);
-  ctx.stroke();
+<section id="contact">
+<h2>Contact</h2>
 
-  ctx.beginPath();
-  ctx.moveTo(52, 28);
-  ctx.bezierCurveTo(34, 24, 20, 30, 4, 28);
-  ctx.stroke();
+<div class="card">
+<p>Email: irahul.pal0487@gmail.com</p>
+<p>ORCID: 0000-0001-7766-7047</p>
+<p><a href="https://docs.google.com/document/d/1UCKNAjZ1dPWgtBYZNdD1Gv9Nm5IeKmHbEqtAERbjmjU/edit?usp=sharing">View CV</a></p>
+</div>
 
-  // Cerebellum
-  ctx.globalAlpha = alpha * 0.5;
-  ctx.lineWidth = 0.9 / scale;
-  ctx.beginPath();
-  ctx.moveTo(-28, 42);
-  ctx.bezierCurveTo(-34, 55, -20, 68, 0, 70);
-  ctx.bezierCurveTo(20, 68, 34, 55, 28, 42);
-  ctx.stroke();
+</section>
 
-  ctx.beginPath();
-  ctx.moveTo(-26, 52);
-  ctx.bezierCurveTo(-10, 48, 10, 48, 26, 52);
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.moveTo(-24, 60);
-  ctx.bezierCurveTo(-10, 56, 10, 56, 24, 60);
-  ctx.stroke();
+<footer>
+Rahul Pal · Ph.D. Scholar · Cognitive Science · IIT Hyderabad
+</footer>
 
-  // Brain stem
-  ctx.globalAlpha = alpha * 0.45;
-  ctx.lineWidth = 1 / scale;
-  ctx.beginPath();
-  ctx.moveTo(-8, 70);
-  ctx.bezierCurveTo(-10, 80, -8, 90, -6, 98);
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.moveTo(8, 70);
-  ctx.bezierCurveTo(10, 80, 8, 90, 6, 98);
-  ctx.stroke();
-
-  ctx.restore();
-}
-
-// EEG electrode positions relative to brain center (normalized)
-const electrodes = [
-  { x: 0,    y: -62, label: 'Fz' },
-  { x: 0,    y: -20, label: 'Cz' },
-  { x: -52,  y: -18, label: 'T3' },
-  { x:  52,  y: -18, label: 'T4' },
-  { x: -38,  y: -52, label: 'F3' },
-  { x:  38,  y: -52, label: 'F4' },
-  { x: -38,  y:  14, label: 'P3' },
-  { x:  38,  y:  14, label: 'P4' },
-  { x:   0,  y:  28, label: 'Pz' },
-];
-
-const waveChannels = [
-  { freq: 0.008, amp: 14, phase: 0.0,  color: '#C8A84B' },
-  { freq: 0.006, amp: 18, phase: 1.2,  color: '#8bb4e8' },
-  { freq: 0.010, amp: 11, phase: 2.4,  color: '#a78bfa' },
-  { freq: 0.007, amp: 16, phase: 0.7,  color: '#5eead4' },
-  { freq: 0.009, amp: 13, phase: 3.1,  color: '#f87171' },
-];
-
-function eegY(ch, x) {
-  const alpha = Math.sin(x * ch.freq + t + ch.phase) * ch.amp;
-  const beta  = Math.sin(x * ch.freq * 2.1 + t * 1.4 + ch.phase) * (ch.amp * 0.28);
-  const theta = Math.sin(x * ch.freq * 0.45 + t * 0.6 + ch.phase * 1.3) * (ch.amp * 0.42);
-  return alpha + beta + theta;
-}
-
-function draw() {
-  const W = cvs.width, H = cvs.height;
-  if (!W || !H) { requestAnimationFrame(draw); return; }
-
-  ctx.clearRect(0, 0, W, H);
-
-  // Faint grid
-  ctx.strokeStyle = 'rgba(200,168,75,0.05)';
-  ctx.lineWidth = 0.5;
-  for (let gx = 0; gx < W; gx += 55) {
-    ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke();
-  }
-  for (let gy = 0; gy < H; gy += 28) {
-    ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
-  }
-
-  // EEG waves — left side, 5 stacked channels
-  const waveAreaW = W * 0.52;
-  const laneH = H / (waveChannels.length + 1);
-
-  waveChannels.forEach((ch, i) => {
-    const yBase = laneH * (i + 1);
-    ctx.beginPath();
-    ctx.strokeStyle = ch.color;
-    ctx.globalAlpha = 0.55;
-    ctx.lineWidth = 1.2;
-    for (let x = 0; x <= waveAreaW; x += 1.5) {
-      const y = yBase + eegY(ch, x);
-      x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-    }
-    ctx.stroke();
-    ctx.globalAlpha = 1;
-  });
-
-  // Brain — right side
-  const brainCX = W * 0.78;
-  const brainCY = H * 0.48;
-  const brainScale = Math.min(H / 200, 0.85);
-  drawBrain(ctx, brainCX, brainCY, brainScale, 0.55);
-
-  // Electrode dots with subtle pulse
-  electrodes.forEach((el, idx) => {
-    const ex = brainCX + el.x * brainScale;
-    const ey = brainCY + el.y * brainScale;
-    const pulse = 0.7 + 0.3 * Math.sin(t * 1.8 + idx * 0.7);
-    const r = 2.5 * brainScale * pulse;
-    ctx.beginPath();
-    ctx.arc(ex, ey, r, 0, Math.PI * 2);
-    ctx.fillStyle = '#C8A84B';
-    ctx.globalAlpha = 0.7 * pulse;
-    ctx.fill();
-    ctx.globalAlpha = 1;
-  });
-
-  // Faint connection lines from wave ends to brain
-  waveChannels.forEach((ch, i) => {
-    const laneH2 = H / (waveChannels.length + 1);
-    const waveEndX = W * 0.52;
-    const waveEndY = laneH2 * (i + 1) + eegY(ch, waveEndX);
-    const el = electrodes[i % electrodes.length];
-    const ex = brainCX + el.x * brainScale;
-    const ey = brainCY + el.y * brainScale;
-    ctx.beginPath();
-    ctx.moveTo(waveEndX, waveEndY);
-    ctx.lineTo(ex, ey);
-    ctx.strokeStyle = ch.color;
-    ctx.globalAlpha = 0.12;
-    ctx.lineWidth = 0.8;
-    ctx.setLineDash([3, 7]);
-    ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.globalAlpha = 1;
-  });
-
-  t += 0.012;
-  requestAnimationFrame(draw);
-}
-
-window.addEventListener('resize', () => { resize(); });
-draw();
-</script>
+</body>
+</html>
