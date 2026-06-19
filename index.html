@@ -24,6 +24,71 @@ footer{background:#0A1628;color:white;text-align:center;padding:20px}
 a{color:#1a56c4}
 </style>
 </head>
+
+<script>
+const eegCanvas = document.getElementById('eegCanvas');
+const eegCtx = eegCanvas.getContext('2d');
+
+function resizeEEG() {
+  eegCanvas.width = eegCanvas.offsetWidth;
+  eegCanvas.height = eegCanvas.offsetHeight;
+}
+
+resizeEEG();
+window.addEventListener('resize', resizeEEG);
+
+let eegTime = 0;
+
+const eegChannels = [
+  { color: '#66aaff', amp: 10, freq: 0.025 },
+  { color: '#00d4ff', amp: 14, freq: 0.018 },
+  { color: '#C8A84B', amp: 12, freq: 0.022 },
+  { color: '#9b87f5', amp: 9, freq: 0.030 },
+  { color: '#4ade80', amp: 11, freq: 0.020 }
+];
+
+function drawEEG() {
+
+  const w = eegCanvas.width;
+  const h = eegCanvas.height;
+
+  eegCtx.clearRect(0, 0, w, h);
+
+  eegChannels.forEach((ch, idx) => {
+
+    const yBase = h * 0.25 + idx * (h * 0.12);
+
+    eegCtx.beginPath();
+
+    for (let x = 0; x <= w; x += 2) {
+
+      const y =
+        yBase +
+        Math.sin(x * ch.freq + eegTime) * ch.amp +
+        Math.sin(x * ch.freq * 2.4 + eegTime * 1.5) * (ch.amp * 0.4);
+
+      if (x === 0) {
+        eegCtx.moveTo(x, y);
+      } else {
+        eegCtx.lineTo(x, y);
+      }
+    }
+
+    eegCtx.strokeStyle = ch.color;
+    eegCtx.lineWidth = 1.5;
+    eegCtx.globalAlpha = 0.35;
+    eegCtx.stroke();
+  });
+
+  eegCtx.globalAlpha = 1;
+  eegTime += 0.03;
+
+  requestAnimationFrame(drawEEG);
+}
+
+drawEEG();
+</script>
+  
 <body>
 
 <header>
