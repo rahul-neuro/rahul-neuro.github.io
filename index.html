@@ -91,17 +91,34 @@ drawEEG();
   
 <body>
 
-<header>
-<canvas id="eegCanvas"></canvas>
-<div class="profile">RP</div>
-<h1>Rahul Pal</h1>
-<p class="subtitle">Ph.D. Scholar · Cognitive Science · IIT Hyderabad</p>
-<p>
-<a style="color:#C8A84B" href="mailto:irahul.pal0487@gmail.com">Email</a> |
-<a style="color:#C8A84B" href="https://orcid.org/0000-0001-7766-7047">ORCID</a> |
-<a style="color:#C8A84B" href="https://docs.google.com/document/d/1UCKNAjZ1dPWgtBYZNdD1Gv9Nm5IeKmHbEqtAERbjmjU/edit?usp=sharing">CV</a>
-</p>
+
+<header class="site-header">
+
+    <canvas id="eegCanvas"></canvas>
+
+    <div class="container">
+
+        <img src="profile.jpg" alt="Rahul Pal" class="profile-pic">
+
+        <h1>Rahul Pal</h1>
+
+        <p>Ph.D. Scholar · Cognitive Science · IIT Hyderabad</p>
+
+        <div class="header-links">
+            <a href="mailto:irahul.pal0487@gmail.com">Email</a> |
+            <a href="https://orcid.org/0000-0001-7766-7047">ORCID</a> |
+            <a href="https://docs.google.com/document/d/1UCKNAjZ1dPWgtBYZNdD1Gv9Nm5IeKmHbEqtAERbjmjU/edit?usp=sharing">CV</a>
+        </div>
+
+        <button id="themeToggle" class="theme-toggle">
+            Toggle Theme
+        </button>
+
+    </div>
+
 </header>
+
+
 
 <nav>
 <a href="#about">About</a>
