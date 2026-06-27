@@ -1,0 +1,25 @@
+
+
+plot.theme = function(){theme(axis.line = element_line(),
+                              plot.title = element_text(size=14,hjust = 0.5),
+                              axis.title.y = element_text(size=14,vjust=0.5,hjust=0.5),
+                              axis.title.x=element_text(size=14,vjust=0.5,hjust=0.5),
+                              axis.ticks.length=unit(.2, "cm"),
+                              axis.text.x = element_text(size=12),
+                              axis.text.y = element_text(size=12),
+                              legend.text = element_text(size=14),
+                              panel.grid.major.x = element_blank(),
+                              panel.grid.minor.x = element_blank(),
+                              panel.grid.major.y = element_blank(),
+                              panel.grid.minor.y = element_blank(),
+                              panel.background = element_blank(),
+                              strip.background=element_blank(),
+                              strip.text.x = element_text(size=14),
+                              #strip.switch.pad.grid = unit(0, "cm"),
+                              plot.margin=unit(c(0.3,0,0.3,0), "cm"),
+                              legend.title = element_blank(),
+                              legend.key.size = unit(1.5, "cm"),
+                              legend.key.width = unit(1.5,"cm"),
+                              legend.key=element_blank())}
+
+
