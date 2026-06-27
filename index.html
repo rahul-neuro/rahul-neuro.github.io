@@ -3,227 +3,470 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rahul Pal | PhD Scholar</title>
+<title>Rahul Pal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#f4f1eb;color:#222}
-header{background:#0A1628;color:white;padding:60px 20px;text-align:center}
-.profile{width:110px;height:110px;border:2px solid #C8A84B;border-radius:50%;
-display:flex;align-items:center;justify-content:center;margin:auto;
-font-size:42px;color:#C8A84B}
-h1{margin:15px 0 5px}
-.subtitle{color:#c9c9c9}
-nav{background:#10233f;padding:12px;text-align:center}
-nav a{color:white;text-decoration:none;margin:0 12px}
-section{max-width:1100px;margin:auto;padding:40px 20px}
-.card{background:white;padding:20px;border-radius:10px;margin:15px 0;
-box-shadow:0 2px 8px rgba(0,0,0,.08)}
-h2{color:#0A1628;border-bottom:2px solid #C8A84B;padding-bottom:8px}
-.skills span{display:inline-block;background:#ece8df;padding:6px 10px;
-margin:4px;border-radius:5px}
-footer{background:#0A1628;color:white;text-align:center;padding:20px}
-a{color:#1a56c4}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #1a1a18;
+  --muted: #6b6b67;
+  --faint: #e8e6e0;
+  --gold: #b89a45;
+  --bg: #f7f5f0;
+  --white: #ffffff;
+  --radius: 2px;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(247,245,240,.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--faint);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+  height: 56px;
+}
+.nav-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  letter-spacing: .01em;
+}
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--ink); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 80px 48px 48px;
+  border-bottom: 1px solid var(--faint);
+}
+.hero-inner {
+  max-width: 680px;
+  width: 100%;
+}
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(48px, 8vw, 80px);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  margin-bottom: 28px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--muted);
+}
+.hero-bio {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 520px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+.hero-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.hero-links a {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+  color: var(--ink);
+  transition: color .2s, border-color .2s;
+}
+.hero-links a:hover { color: var(--gold); }
+
+/* ── SECTIONS ── */
+.section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 96px 48px;
+  border-bottom: 1px solid var(--faint);
+}
+.section:last-of-type { border-bottom: none; }
+
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 48px;
+}
+
+/* ── RESEARCH CARDS ── */
+.research-grid { display: flex; flex-direction: column; gap: 0; }
+.research-item {
+  display: grid;
+  grid-template-columns: 1px 1fr;
+  gap: 0 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--faint);
+}
+.research-item:last-child { border-bottom: none; }
+.research-line {
+  width: 1px;
+  background: var(--faint);
+  position: relative;
+}
+.research-line::before {
+  content: '';
+  position: absolute;
+  top: 6px; left: -3px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.research-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.research-desc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── PUBLICATIONS ── */
+.pub {
+  padding: 36px 0;
+  border-bottom: 1px solid var(--faint);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-start: start;
+}
+.pub:last-child { border-bottom: none; }
+.pub-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 19px;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.pub-meta {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.pub-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gold);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.pub-link:hover { border-color: var(--gold); }
+.pub-year {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px;
+  color: var(--faint);
+  white-space: nowrap;
+  align-self: start;
+  margin-top: 4px;
+}
+
+/* ── CONFERENCE ── */
+.conf {
+  background: var(--white);
+  border: 1px solid var(--faint);
+  padding: 32px;
+  border-radius: 4px;
+}
+.conf-venue {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.conf-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+.conf-poster {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ── SKILLS ── */
+.skills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.skill {
+  font-size: 13px;
+  font-weight: 400;
+  padding: 8px 16px;
+  border: 1px solid var(--faint);
+  border-radius: 2px;
+  color: var(--ink);
+  background: var(--white);
+  letter-spacing: .01em;
+  transition: border-color .2s, color .2s;
+}
+.skill:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ── TEACHING ── */
+.teaching-item {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--faint);
+}
+.teaching-item:last-child { border-bottom: none; }
+.teaching-icon {
+  width: 40px; height: 40px;
+  background: var(--white);
+  border: 1px solid var(--faint);
+  border-radius: 2px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  font-size: 18px;
+}
+.teaching-title {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.teaching-desc {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ── CONTACT ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.contact-item { }
+.contact-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.contact-value {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+}
+.contact-value a {
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 1px;
+  transition: color .2s;
+}
+.contact-value a:hover { color: var(--gold); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 32px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--faint);
+}
+.footer-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 15px;
+}
+.footer-note {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  nav { padding: 0 20px; }
+  .nav-links { gap: 16px; }
+  .hero, .section { padding-left: 20px; padding-right: 20px; }
+  .pub { grid-template-columns: 1fr; }
+  .pub-year { display: none; }
+  .contact-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+}
 </style>
 </head>
-
-<script>
-const eegCanvas = document.getElementById('eegCanvas');
-const eegCtx = eegCanvas.getContext('2d');
-
-function resizeEEG() {
-  eegCanvas.width = eegCanvas.offsetWidth;
-  eegCanvas.height = eegCanvas.offsetHeight;
-}
-
-resizeEEG();
-window.addEventListener('resize', resizeEEG);
-
-let eegTime = 0;
-
-const eegChannels = [
-  { color: '#66aaff', amp: 10, freq: 0.025 },
-  { color: '#00d4ff', amp: 14, freq: 0.018 },
-  { color: '#C8A84B', amp: 12, freq: 0.022 },
-  { color: '#9b87f5', amp: 9, freq: 0.030 },
-  { color: '#4ade80', amp: 11, freq: 0.020 }
-];
-
-function drawEEG() {
-
-  const w = eegCanvas.width;
-  const h = eegCanvas.height;
-
-  eegCtx.clearRect(0, 0, w, h);
-
-  eegChannels.forEach((ch, idx) => {
-
-    const yBase = h * 0.25 + idx * (h * 0.12);
-
-    eegCtx.beginPath();
-
-    for (let x = 0; x <= w; x += 2) {
-
-      const y =
-        yBase +
-        Math.sin(x * ch.freq + eegTime) * ch.amp +
-        Math.sin(x * ch.freq * 2.4 + eegTime * 1.5) * (ch.amp * 0.4);
-
-      if (x === 0) {
-        eegCtx.moveTo(x, y);
-      } else {
-        eegCtx.lineTo(x, y);
-      }
-    }
-
-    eegCtx.strokeStyle = ch.color;
-    eegCtx.lineWidth = 1.5;
-    eegCtx.globalAlpha = 0.35;
-    eegCtx.stroke();
-  });
-
-  eegCtx.globalAlpha = 1;
-  eegTime += 0.03;
-
-  requestAnimationFrame(drawEEG);
-}
-
-drawEEG();
-</script>
-  
 <body>
 
-
-<header class="site-header">
-
-    <canvas id="eegCanvas"></canvas>
-
-    <div class="container">
-
-        <img src="profile.jpg" alt="Rahul Pal" class="profile-pic">
-
-        <h1>Rahul Pal</h1>
-
-        <p>Ph.D. Scholar · Cognitive Science · IIT Hyderabad</p>
-
-        <div class="header-links">
-            <a href="mailto:irahul.pal0487@gmail.com">Email</a> |
-            <a href="https://orcid.org/0000-0001-7766-7047">ORCID</a> |
-            <a href="https://docs.google.com/document/d/1UCKNAjZ1dPWgtBYZNdD1Gv9Nm5IeKmHbEqtAERbjmjU/edit?usp=sharing">CV</a>
-        </div>
-
-        <button id="themeToggle" class="theme-toggle">
-            Toggle Theme
-        </button>
-
-    </div>
-
-</header>
-
-
-
 <nav>
-<a href="#about">About</a>
-<a href="#research">Research</a>
-<a href="#publications">Publications</a>
-<a href="#teaching">Teaching</a>
-<a href="#skills">Skills</a>
-<a href="#contact">Contact</a>
+  <span class="nav-name">Rahul Pal</span>
+  <div class="nav-links">
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
 </nav>
 
-<section id="about">
-<h2>About</h2>
-<div class="card">
-<p>I am a Ph.D. Scholar in Cognitive Science at IIT Hyderabad. My research focuses on working memory, motor learning, skill transfer, motor memory consolidation, and EEG correlates of learning.</p>
-<p><strong>M.Sc. Psychology:</strong> Banaras Hindu University</p>
-<p><strong>B.Sc.:</strong> Psychology Honors, Zoology, Chemistry (BHU)</p>
-</div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">IIT Hyderabad · Cognitive Science</p>
+    <h1>Rahul<br><em>Pal</em></h1>
+    <p class="hero-bio">Ph.D. Scholar studying how the brain learns and remembers movement — from working memory to motor skill transfer, EEG oscillations to interlimb generalization.</p>
+    <div class="hero-links">
+      <a href="mailto:irahul.pal0487@gmail.com">Email</a>
+      <a href="https://orcid.org/0000-0001-7766-7047" target="_blank">ORCID</a>
+      <a href="https://docs.google.com/document/d/1UCKNAjZ1dPWgtBYZNdD1Gv9Nm5IeKmHbEqtAERbjmjU/edit?usp=sharing" target="_blank">CV</a>
+    </div>
+  </div>
 </section>
 
-<section id="research">
-<h2>Research</h2>
+<!-- RESEARCH -->
+<section class="section" id="research">
+  <p class="section-label">Research</p>
+  <div class="research-grid">
 
-<div class="card">
-<h3>Role of Working Memory on Motor Memory Formation and Transfer</h3>
-<p>Investigating how working memory influences motor learning, memory consolidation, reconsolidation, and interlimb transfer.</p>
-</div>
+    <div class="research-item">
+      <div class="research-line"></div>
+      <div>
+        <h3 class="research-title">Working Memory &amp; Motor Memory Formation</h3>
+        <p class="research-desc">Investigating how working memory shapes motor learning, memory consolidation, reconsolidation, and interlimb transfer.</p>
+      </div>
+    </div>
 
-<div class="card">
-<h3>EEG Correlates of Motor Skill Learning</h3>
-<p>Examining ERPs, oscillatory dynamics, beta rebound, theta activity, and functional connectivity associated with motor skill acquisition and transfer.</p>
-</div>
+    <div class="research-item">
+      <div class="research-line"></div>
+      <div>
+        <h3 class="research-title">EEG Correlates of Motor Skill Learning</h3>
+        <p class="research-desc">Examining ERPs, oscillatory dynamics, beta rebound, theta activity, and functional connectivity during motor skill acquisition and transfer.</p>
+      </div>
+    </div>
 
-<div class="card">
-<h3>Interaction between Release of Inhibitory Control and Emotion Perception</h3>
-<p>Behavioral and TMS investigation conducted at CBCS, University of Allahabad.</p>
-</div>
+    <div class="research-item">
+      <div class="research-line"></div>
+      <div>
+        <h3 class="research-title">Inhibitory Control &amp; Emotion Perception</h3>
+        <p class="research-desc">Behavioral and TMS investigation of the interaction between inhibitory control release and emotion perception, conducted at CBCS, University of Allahabad.</p>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<section id="publications">
-<h2>Publications</h2>
+<!-- PUBLICATIONS -->
+<section class="section" id="publications">
+  <p class="section-label">Publications</p>
 
-<div class="card">
-<h3>Role of working memory in interlimb generalization of newly learned skills</h3>
-<p><em>Scientific Reports, 2025</em></p>
-<p>Yadav, G., <strong>Pal, R.</strong>, Matkar, S. et al.</p>
-<p><a href="https://doi.org/10.1038/s41598-025-88997-z">doi:10.1038/s41598-025-88997-z</a></p>
-</div>
+  <div class="pub">
+    <div>
+      <h3 class="pub-title">Role of working memory in interlimb generalization of newly learned skills</h3>
+      <p class="pub-meta">Yadav G., Pal R., Matkar S. et al. — <em>Scientific Reports</em>, 2025</p>
+      <a class="pub-link" href="https://doi.org/10.1038/s41598-025-88997-z" target="_blank">doi:10.1038/s41598-025-88997-z ↗</a>
+    </div>
+    <span class="pub-year">2025</span>
+  </div>
 
-</section>
-
-<section>
-<h2>Conference Presentations</h2>
-
-<div class="card">
-<h3>NCM 2026, Kobe, Japan</h3>
-<p><strong>Poster P2-B-53</strong></p>
-<p>Engaging working memory following skill memory reactivation has a time-dependent impact on skill generalization.</p>
-</div>
-
-</section>
-
-<section id="teaching">
-<h2>Teaching</h2>
-
-<div class="card">
-<h3>Teaching Assistant – Introduction to Cognitive Science</h3>
-<p>Assisted instruction, assessment, moderation, and student support for more than 280 undergraduate students at IIT Hyderabad.</p>
-</div>
-
-</section>
-
-<section id="skills">
-<h2>Skills</h2>
-
-<div class="card skills">
-<span>MATLAB</span>
-<span>Python</span>
-<span>R</span>
-<span>EEGLAB</span>
-<span>EEG</span>
-<span>ERP Analysis</span>
-<span>Time-Frequency Analysis</span>
-<span>Connectivity Analysis</span>
-<span>PsychoPy</span>
-<span>Psychtoolbox</span>
-<span>TMS</span>
-<span>LaTeX</span>
-<span>Zotero</span>
-</div>
+  <div class="pub" style="padding-top:36px;">
+    <div>
+      <h3 class="pub-title">Engaging working memory after skill memory reactivation — time-dependent effects on generalization</h3>
+      <p class="pub-meta">Poster P2-B-53 · NCM 2026, Kobe, Japan</p>
+      <span class="pub-link" style="cursor:default; color:var(--muted); border:none;">Conference presentation</span>
+    </div>
+    <span class="pub-year">2026</span>
+  </div>
 
 </section>
 
-<section id="contact">
-<h2>Contact</h2>
+<!-- TEACHING -->
+<section class="section" id="teaching">
+  <p class="section-label">Teaching</p>
+  <div class="teaching-item">
+    <div class="teaching-icon">✦</div>
+    <div>
+      <p class="teaching-title">Teaching Assistant — Introduction to Cognitive Science</p>
+      <p class="teaching-desc">Assisted instruction, assessment, moderation, and student support for more than 280 undergraduate students at IIT Hyderabad.</p>
+    </div>
+  </div>
+</section>
 
-<div class="card">
-<p>Email: irahul.pal0487@gmail.com</p>
-<p>ORCID: 0000-0001-7766-7047</p>
-<p><a href="https://docs.google.com/document/d/1UCKNAjZ1dPWgtBYZNdD1Gv9Nm5IeKmHbEqtAERbjmjU/edit?usp=sharing">View CV</a></p>
-</div>
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <p class="section-label">Skills &amp; Tools</p>
+  <div class="skills-wrap">
+    <span class="skill">MATLAB</span>
+    <span class="skill">Python</span>
+    <span class="skill">R</span>
+    <span class="skill">EEGLAB</span>
+    <span class="skill">EEG</span>
+    <span class="skill">ERP Analysis</span>
+    <span class="skill">Time-Frequency Analysis</span>
+    <span class="skill">Connectivity Analysis</span>
+    <span class="skill">PsychoPy</span>
+    <span class="skill">Psychtoolbox</span>
+    <span class="skill">TMS</span>
+    <span class="skill">LaTeX</span>
+    <span class="skill">Zotero</span>
+  </div>
+</section>
 
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <p class="section-label">Contact</p>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <p class="contact-label">Email</p>
+      <p class="contact-value"><a href="mailto:irahul.pal0487@gmail.com">irahul.pal0487@gmail.com</a></p>
+    </div>
+    <div class="contact-item">
+      <p class="contact-label">ORCID</p>
+      <p class="contact-value"><a href="https://orcid.org/0000-0001-7766-7047" target="_blank">0000-0001-7766-7047</a></p>
+    </div>
+    <div class="contact-item">
+      <p class="contact-label">Curriculum Vitae</p>
+      <p class="contact-value"><a href="https://docs.google.com/document/d/1UCKNAjZ1dPWgtBYZNdD1Gv9Nm5IeKmHbEqtAERbjmjU/edit?usp=sharing" target="_blank">View CV ↗</a></p>
+    </div>
+    <div class="contact-item">
+      <p class="contact-label">Affiliation</p>
+      <p class="contact-value">IIT Hyderabad</p>
+    </div>
+  </div>
 </section>
 
 <footer>
-Rahul Pal · Ph.D. Scholar · Cognitive Science · IIT Hyderabad
+  <span class="footer-name">Rahul Pal</span>
+  <span class="footer-note">Ph.D. Scholar · Cognitive Science · IIT Hyderabad</span>
 </footer>
 
 </body>
