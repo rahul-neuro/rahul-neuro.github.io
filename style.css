@@ -90,6 +90,27 @@ nav {
 }
 .hero-links a:hover { color: var(--gold); }
 
+.hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+.hero-photo-wrap { flex-shrink: 0; }
+.hero-photo {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  display: block;
+  filter: grayscale(15%);
+}
+@media (max-width: 640px) {
+  .hero-top { flex-direction: column-reverse; align-items: flex-start; gap: 28px; }
+  .hero-photo { width: 140px; height: 140px; }
+}
+
 /* ── SECTION GRID ── */
 .section-label {
   font-size: 11px; font-weight: 500;
